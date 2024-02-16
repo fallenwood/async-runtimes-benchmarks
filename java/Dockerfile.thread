@@ -1,0 +1,13 @@
+FROM debian:12 AS base
+WORKDIR /app
+RUN apt update -y && apt install time -y
+
+FROM ghcr.io/graalvm/native-image-community:21.0.2-ol9-20240116 AS build
+WORKDIR /src
+COPY Threads.java .
+RUN javac Threads.java
+RUN native-image Threads
+
+FROM base AS final
+COPY --from=build /src/threads /app/threads
+ENTRYPOINT ["/usr/bin/time", "--verbose", "./threads"]

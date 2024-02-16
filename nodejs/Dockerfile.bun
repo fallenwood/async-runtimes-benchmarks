@@ -1,4 +1,4 @@
-FROM oven/bun:sha256:ac6cf04f6af504e1b3ad129a91ecbf1f982eeb825807b2efa4d7d41dc4f17a2c AS base
+FROM oven/bun@sha256:ac6cf04f6af504e1b3ad129a91ecbf1f982eeb825807b2efa4d7d41dc4f17a2c AS base
 WORKDIR /app
 RUN apt update -y && apt install time -y
 

@@ -1,6 +1,6 @@
 defmodule Main do
   def start() do
-    num_tasks = case System.argv |> List.first() |> Integer.parse() do
+    num_tasks = case System.argv |> List.first("10000") |> Integer.parse() do
       {num, _} -> num
       _ -> 10000
     end
