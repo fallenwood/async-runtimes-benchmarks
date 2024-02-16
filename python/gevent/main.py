@@ -1,4 +1,5 @@
 import gevent
+import sys
 
 def perform_task():
     gevent.sleep(10)

@@ -1,0 +1,7 @@
+FROM node:21-bookworm-slim AS base
+WORKDIR /app
+RUN apt update -y && apt install time -y
+
+FROM base AS final
+COPY main.js /app/main.js
+ENTRYPOINT ["/usr/bin/time", "--verbose", "node", "main.js"]
