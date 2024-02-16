@@ -14,7 +14,7 @@ async function runTasks(numTasks) {
   console.log('All tasks completed');
 }
 
-const numTasks = parseInt(process.argv[2]) || 10000;
+const numTasks = parseInt(process.argv[2]) || 100_000;
 
 runTasks(numTasks).catch((error) => {
   console.error('Error:', error);

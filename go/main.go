@@ -18,15 +18,14 @@ func main() {
     }
 
     var wg sync.WaitGroup
+    sleep := 10 * time.Second
     for i := 0; i < numRoutines; i++ {
-	wg.Add(1)
-	go func() {
-	    defer wg.Done()
-	    time.Sleep(10 * time.Second)
-	}()
+	    wg.Add(1)
+	    go func() {
+	        defer wg.Done()
+	        time.Sleep(sleep)
+	    }()
     }
     wg.Wait()
     fmt.Println("All goroutines finished.")
 }
-
-

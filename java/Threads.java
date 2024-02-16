@@ -5,12 +5,12 @@ import java.util.List;
 public class Threads {
 
     public static void main(String[] args) throws InterruptedException {
-	int numTasks = 100000;
+	    int numTasks = 100000;
         if (args.length > 0) {
             numTasks = Integer.parseInt(args[0]);
         }
 
-        List<Thread> threads = new ArrayList<>();
+        var threads = new Thread[numTasks];
 
         for (int i = 0; i < numTasks; i++) {
             Thread thread = new Thread(() -> {
@@ -20,8 +20,8 @@ public class Threads {
                     // Handle exception
                 }
             });
-	    thread.start();
-            threads.add(thread);
+    	    thread.start();
+            threads[i] = thread;
         }
 
         // Wait for all threads to complete

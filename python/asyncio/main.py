@@ -4,7 +4,6 @@ import sys
 async def perform_task():
     await asyncio.sleep(10)
 
-
 async def main(num_tasks):
     tasks = []
 
@@ -22,4 +21,3 @@ if __name__ == "__main__":
 
     asyncio.run(main(num_tasks))
     print("All tasks completed")
-
