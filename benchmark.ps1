@@ -11,7 +11,7 @@ function Get-Mb {
 
 $images = Get-Images
 
-$numTasksR1 = 1, 10, 1000
+$numTasksR1 = 1, 10, 1000, 10000
 $numTasksR2 = 100000, 1000000
 
 $resp = New-Object System.Collections.Generic.List[System.Object]

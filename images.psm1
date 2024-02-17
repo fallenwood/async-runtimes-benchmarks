@@ -1,11 +1,13 @@
 $version="20240216"
 
+$imageBaseName="cb"
+
 function Get-TagName {
     param (
         [String]
         $tag
     )
-    return "cb:${tag}-$version"
+    return "${imageBaseName}:${tag}-$version"
 }
 
 $images = @{ Tag = "dotnet"; Dockerfile="./dotnet/Dockerfile"; Directory="./dotnet"; },
@@ -24,5 +26,10 @@ function Get-Images {
     return $images
 }
 
+function Get-ImageBaseName {
+    return $imageBaseName
+}
+
+Export-ModuleMember -Function Get-ImageBaseName
 Export-ModuleMember -Function Get-TagName
 Export-ModuleMember -Function Get-Images
