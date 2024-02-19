@@ -9,7 +9,7 @@ foreach ($image in $images) {
 
     Write-Host "Building image for $tag"
     
-    Invoke-Expression "$container build -t $tag -f ${$image.Dockerfile} ${$image.Directory}"
+    Invoke-Expression "$container build -t $tag --file ${$image.Dockerfile} ${$image.Directory}"
 }
 
 Write-Host "Docker Images built, run ""pwsh ./benchmark.ps1"" to start benchmarking..."
