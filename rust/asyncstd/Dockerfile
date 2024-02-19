@@ -1,8 +1,9 @@
-FROM registry.docker.com/library/debian:12 AS base
+FROM cb:base AS base
 WORKDIR /app
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update -y && apt install time -y
 
-FROM rust:1.76.0 AS build
+FROM registry.docker.com/library/rust:1.76.0-slim AS build
 WORKDIR /src
 COPY . .
 RUN cargo build --release

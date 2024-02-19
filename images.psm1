@@ -10,6 +10,14 @@ function Get-TagName {
     return "${imageBaseName}:${tag}-$version"
 }
 
+function Get-ImageTag {
+    param (
+        [String]
+        $tag
+    )
+    return "${tag}-${version}"
+}
+
 $images = @{ Tag = "dotnet"; Dockerfile="./dotnet/Dockerfile"; Directory="./dotnet"; },
     @{ Tag = "python-asyncio"; Dockerfile="./python/asyncio/Dockerfile"; Directory="./python/asyncio";  },
     @{ Tag = "python-gevent"; Dockerfile="./python/gevent/Dockerfile"; Directory="./python/gevent"; },
@@ -30,6 +38,12 @@ function Get-ImageBaseName {
     return $imageBaseName
 }
 
+function Get-Container {
+    return $ENV:CB_CONTAINER ?? "docker"
+}
+
 Export-ModuleMember -Function Get-ImageBaseName
+Export-ModuleMember -Function Get-ImageTag
 Export-ModuleMember -Function Get-TagName
 Export-ModuleMember -Function Get-Images
+Export-ModuleMember -Function Get-Container

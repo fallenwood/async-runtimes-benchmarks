@@ -1,5 +1,7 @@
-FROM oven/bun@sha256:ac6cf04f6af504e1b3ad129a91ecbf1f982eeb825807b2efa4d7d41dc4f17a2c AS base
+FROM registry.docker.com/oven/bun@sha256:ac6cf04f6af504e1b3ad129a91ecbf1f982eeb825807b2efa4d7d41dc4f17a2c AS base
 WORKDIR /app
+RUn sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+# RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update -y && apt install time -y
 
 FROM base AS final

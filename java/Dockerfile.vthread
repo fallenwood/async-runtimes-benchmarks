@@ -1,6 +1,5 @@
-FROM registry.docker.com/library/debian:12 AS base
+FROM cb:base AS base
 WORKDIR /app
-RUN apt update -y && apt install time -y
 
 FROM ghcr.io/graalvm/native-image-community:21.0.2-ol9-20240116 AS build
 WORKDIR /src

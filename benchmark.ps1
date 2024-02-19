@@ -1,6 +1,6 @@
 Import-Module "./images.psm1"
 
-$container = $ENV:CB_CONTAINER ?? "docker"
+$container = Get-Container
 
 function Get-Mb {
     param (

@@ -1,0 +1,3 @@
+FROM registry.docker.com/library/debian:12-slim AS base
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+RUN apt-get update -y && apt-get install time -y

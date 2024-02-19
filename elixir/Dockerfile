@@ -1,5 +1,7 @@
-FROM elixir:1.16.1 AS base
+FROM registry.docker.com/library/elixir:1.16.1-slim AS base
 WORKDIR /app
+RUn sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+# RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update -y && apt install time -y
 
 FROM base AS final

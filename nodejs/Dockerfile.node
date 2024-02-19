@@ -1,5 +1,6 @@
 FROM registry.docker.com/library/node:21-bookworm-slim AS base
 WORKDIR /app
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update -y && apt install time -y
 
 FROM base AS final

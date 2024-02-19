@@ -1,6 +1,8 @@
 # TODO
 Import-Module "./images.psm1"
 
+$container = Get-Container
+
 $baseName = Get-ImageBaseName
 
 $text = docker images | Select-String $baseName | Out-String

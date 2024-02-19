@@ -1,6 +1,5 @@
-FROM registry.docker.com/library/debian:12 as base
+FROM cb:base AS base
 WORKDIR /app
-RUN apt update -y && apt install time -y
 
 FROM registry.docker.com/library/golang:1.22 as build
 WORKDIR /src
