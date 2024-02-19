@@ -1,4 +1,4 @@
-FROM python:3.12.2-bookworm as base
+FROM registry.docker.com/library/python:3.12.2-bookworm as base
 WORKDIR /app
 RUN apt update -y && apt install time -y
 RUN pip install -U gevent

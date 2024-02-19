@@ -1,4 +1,4 @@
-FROM node:21-bookworm-slim AS base
+FROM registry.docker.com/library/node:21-bookworm-slim AS base
 WORKDIR /app
 RUN apt update -y && apt install time -y
 
