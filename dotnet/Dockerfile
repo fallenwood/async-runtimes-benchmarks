@@ -1,4 +1,4 @@
-FROM debian:12 AS base
+FROM registry.docker.com/library/debian:12 AS base
 WORKDIR /app
 RUN apt update && apt install time
 

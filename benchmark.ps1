@@ -1,5 +1,7 @@
 Import-Module "./images.psm1"
 
+$container = $ENV:CB_CONTAINER ?? "docker"
+
 function Get-Mb {
     param (
         [String]
@@ -22,7 +24,7 @@ foreach ($numTask in $numTasksR1) {
 
         Write-Host "Benchmarking $($image.Tag) with $numTask threads/coroutines..."
     
-        $maximumSizeString = docker run --rm $tag $numTask 2>&1 | Select-String "Maximum resident set size" | Out-String
+        $maximumSizeString = Invoke-Expression "$container run --rm $tag $numTask 2>&1" | Select-String "Maximum resident set size" | Out-String
 
         $maximumSize = $maximumSizeString.Split(": ")[1].Trim()
 
@@ -44,7 +46,7 @@ foreach ($numTask in $numTasksR2) {
 
         Write-Host "Benchmarking $($image.Tag) with $numTask threads/coroutines..."
     
-        $maximumSizeString = docker run --rm $tag $numTask 2>&1 | Select-String "Maximum resident set size" | Out-String
+        $maximumSizeString = Invoke-Expression "$container run --rm $tag $numTask 2>&1" | Select-String "Maximum resident set size" | Out-String
 
         $maximumSize = $maximumSizeString.Split(": ")[1].Trim()
 
